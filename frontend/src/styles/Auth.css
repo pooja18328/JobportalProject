@@ -1,0 +1,284 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: linear-gradient(135deg, #dbeafe, #eff6ff, #f0f9ff);
+}
+
+/* =========================
+   AUTH PAGE
+========================= */
+.authPage {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.authContainer {
+  width: 100%;
+  max-width: 1350px;
+  min-height: 720px;
+  display: flex;
+  border-radius: 30px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 25px 60px rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* =========================
+   IMAGE SECTION
+========================= */
+.authImageSection {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #bfdbfe, #dbeafe, #eff6ff);
+}
+
+.authImageSection img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.authImageSection::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(37, 99, 235, 0.25),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+.overlayText {
+  position: absolute;
+  bottom: 60px;
+  left: 45px;
+  color: #1e3a8a;
+  z-index: 2;
+}
+
+.overlayText h1 {
+  font-size: 3.2rem;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+.overlayText p {
+  font-size: 1.15rem;
+  max-width: 420px;
+  line-height: 1.7;
+  color: #334155;
+}
+
+/* =========================
+   FORM SECTION
+========================= */
+.authFormSection {
+  flex: 1;
+  padding: 75px 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+}
+
+.authFormSection h2 {
+  font-size: 2.8rem;
+  color: #2563eb;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.authFormSection form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* =========================
+   POPUP MESSAGE
+========================= */
+.customMessage {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.customMessage.success {
+  background-color: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.customMessage.error {
+  background-color: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   INPUTS
+========================= */
+.inputGroup {
+  position: relative;
+}
+
+.inputGroup input,
+.inputGroup select {
+  width: 100%;
+  padding: 17px 18px;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  outline: none;
+  font-size: 1rem;
+  background: #f8fafc;
+  color: #1e293b;
+  transition: 0.3s;
+}
+
+.inputGroup input::placeholder {
+  color: #64748b;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  background: white;
+}
+
+.inputGroup select option {
+  color: black;
+}
+
+/* =========================
+   ICONS (OPTIONAL)
+========================= */
+.inputGroup .icon {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #2563eb;
+  font-size: 1.2rem;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.primaryBtn {
+  padding: 17px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: white;
+  font-size: 1.12rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 25px rgba(37, 99, 235, 0.25);
+}
+
+.secondaryBtn {
+  text-align: center;
+  padding: 15px;
+  border-radius: 14px;
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.secondaryBtn:hover {
+  background: #eff6ff;
+  border-color: #2563eb;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 992px) {
+  .authContainer {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .authImageSection {
+    height: 350px;
+  }
+
+  .overlayText {
+    bottom: 30px;
+    left: 25px;
+  }
+
+  .overlayText h1 {
+    font-size: 2.2rem;
+  }
+
+  .authFormSection {
+    padding: 50px 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .authFormSection h2 {
+    font-size: 2rem;
+  }
+
+  .overlayText h1 {
+    font-size: 1.8rem;
+  }
+
+  .overlayText p {
+    font-size: 1rem;
+  }
+
+  .authPage {
+    padding: 12px;
+  }
+}

@@ -1,0 +1,175 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.postJobPage {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff, #f0f9ff);
+  padding: 40px 20px;
+}
+
+.postJobContainer {
+  width: 100%;
+  max-width: 700px;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.postJobContainer h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1e293b;
+  font-size: 2rem;
+}
+
+.postJobContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.postJobContainer input,
+.postJobContainer select,
+.postJobContainer textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.postJobContainer input:focus,
+.postJobContainer select:focus,
+.postJobContainer textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.postJobContainer textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.postJobContainer button {
+  padding: 15px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.postJobContainer button:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+}
+
+@media (max-width: 768px) {
+  .postJobContainer {
+    padding: 25px;
+  }
+
+  .postJobContainer h2 {
+    font-size: 1.6rem;
+  }
+}
+.viewJobsPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff, #f8fbff);
+  padding: 40px 20px;
+}
+
+.viewJobsContainer {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.viewJobsContainer h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1e3a8a;
+}
+
+.jobCard {
+  background: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.jobCard h3 {
+  color: #2563eb;
+  margin-bottom: 12px;
+}
+
+.jobCard p {
+  margin: 8px 0;
+  color: #374151;
+}
+
+.jobCard input,
+.jobCard textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.jobCard textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.jobButtons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.jobButtons button,
+.jobCard button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.jobButtons button:first-child {
+  background: #2563eb;
+  color: white;
+}
+
+.jobButtons button:last-child {
+  background: #dc2626;
+  color: white;
+}
+
+.jobButtons button:hover,
+.jobCard button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}

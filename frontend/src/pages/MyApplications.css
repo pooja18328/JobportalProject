@@ -1,0 +1,128 @@
+.applicationsPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+  padding: 40px 20px;
+}
+
+.applicationsContainer {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.applicationsContainer h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #1e3a8a;
+  margin-bottom: 35px;
+}
+
+.noApplications {
+  text-align: center;
+  color: #64748b;
+  font-size: 18px;
+}
+
+.applicationCard {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.applicationCard:hover {
+  transform: translateY(-5px);
+}
+
+.applicationTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.applicationTop h3 {
+  color: #2563eb;
+  font-size: 1.6rem;
+}
+
+.statusBadge {
+  padding: 8px 15px;
+  border-radius: 30px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.statusBadge.Pending {
+  background: orange;
+}
+
+.statusBadge.Accepted {
+  background: #16a34a;
+}
+
+.statusBadge.Rejected {
+  background: crimson;
+}
+
+.applicationDetails p {
+  margin: 10px 0;
+  color: #374151;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.buttonGroup button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.resumeBtn {
+  background: #2563eb;
+  color: white;
+}
+
+.acceptBtn {
+  background: #16a34a;
+  color: white;
+}
+
+.rejectBtn {
+  background: crimson;
+  color: white;
+}
+
+.buttonGroup button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .applicationTop {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .applicationsContainer h2 {
+    font-size: 2rem;
+  }
+
+  .applicationTop h3 {
+    font-size: 1.3rem;
+  }
+}
