@@ -4,9 +4,7 @@ const router = express.Router();
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
 const sendEmail = require("../utils/sendEmail");
-
 
 // ================= REGISTER =================
 router.post("/register", async (req, res) => {
@@ -37,45 +35,13 @@ router.post("/register", async (req, res) => {
       password: hashedPassword,
     });
 
-    // SEND WELCOME EMAIL
     await sendEmail(
       email,
       "Welcome to JobPortalPro 🎉",
       `
-      <div style="font-family: Arial, sans-serif; padding:20px;">
-        <h2 style="color:#2563eb;">
-          Welcome to JobPortalPro
-        </h2>
-
-        <p>Hello <b>${name}</b>,</p>
-
-        <p>
-          Thank you for registering with JobPortalPro.
-        </p>
-
-        <p>
-          Your account has been created successfully as a
-          <b>${role}</b>.
-        </p>
-
-        <p>
-          You can now:
-        </p>
-
-        <ul>
-          <li>Search and apply for jobs</li>
-          <li>Track your applications</li>
-          <li>Upload resumes</li>
-          <li>Connect with employers</li>
-        </ul>
-
-        <br>
-
-        <p>
-          Best Regards,<br>
-          <b>JobPortalPro Team</b>
-        </p>
-      </div>
+      <h2>Welcome ${name}</h2>
+      <p>Your account has been created successfully.</p>
+      <p>Role : <b>${role}</b></p>
       `
     );
 
@@ -85,25 +51,18 @@ router.post("/register", async (req, res) => {
     });
 
   } catch (error) {
-    console.log(error);
-
     res.status(500).json({
       message: error.message,
     });
   }
 });
 
-
 // ================= LOGIN =================
 router.post("/login", async (req, res) => {
-  try {
-    const { role, email, password } = req.body;
 
-    if (!role || !email || !password) {
-      return res.status(400).json({
-        message: "Please fill all fields",
-      });
-    }
+  try {
+
+    const { role, email, password } = req.body;
 
     const user = await User.findOne({
       email,
@@ -145,10 +104,71 @@ router.post("/login", async (req, res) => {
     });
 
   } catch (error) {
+
     res.status(500).json({
       message: error.message,
     });
+
   }
+
+});
+
+// ================= JOB SEEKERS =================
+
+router.get("/jobseekers", async (req, res) => {
+
+  try {
+
+    const users = await User.find(
+      {
+        role: "Job Seeker",
+      },
+      "-password"
+    );
+
+    res.json({
+      success: true,
+      users,
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+
+  }
+
+});
+
+// ================= EMPLOYERS =================
+
+router.get("/employers", async (req, res) => {
+
+  try {
+
+    const users = await User.find(
+      {
+        role: "Employer",
+      },
+      "-password"
+    );
+
+    res.json({
+      success: true,
+      users,
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+
+  }
+
 });
 
 module.exports = router;

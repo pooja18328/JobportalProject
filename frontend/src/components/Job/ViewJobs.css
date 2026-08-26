@@ -1,0 +1,381 @@
+/* VIEW JOBS FULL PAGE */
+
+.postedJobsPage {
+
+  min-height:100vh;
+
+  width:100%;
+
+  padding:60px 20px;
+
+  background:linear-gradient(135deg,#dbeafe,#eff6ff,#f8fbff);
+
+}
+
+
+/* CONTAINER */
+
+.postedJobsContainer {
+
+  width:100%;
+
+  max-width:1000px;
+
+  margin:auto;
+
+  text-align:center;
+
+}
+
+
+
+/* TITLE */
+
+.postedJobsContainer h2 {
+
+  font-size:2.7rem;
+
+  color:#1e3a8a;
+
+  margin-bottom:40px;
+
+  font-weight:700;
+
+}
+
+
+
+/* JOB CARD */
+
+.postedJobCard {
+
+
+  background:white;
+
+
+  width:500px;
+
+
+  min-height:420px;
+
+
+  margin:0 auto 30px;
+
+
+  padding:30px;
+
+
+  border-radius:20px;
+
+
+  box-shadow:0 12px 28px rgba(37,99,235,0.12);
+
+
+
+  display:flex;
+
+
+  flex-direction:column;
+
+
+  align-items:flex-start;
+
+
+  gap:12px;
+
+
+
+  box-sizing:border-box;
+
+
+  transition:0.3s;
+
+
+}
+
+
+
+.postedJobCard:hover {
+
+
+  transform:translateY(-5px);
+
+
+}
+
+
+
+
+
+/* TITLE */
+
+.postedJobCard h3 {
+
+
+  width:100%;
+
+
+  text-align:center;
+
+
+  color:#2563eb;
+
+
+  font-size:1.8rem;
+
+
+  margin-bottom:15px;
+
+
+}
+
+
+
+
+/* DETAILS */
+
+.postedJobCard p {
+
+
+  width:100%;
+
+
+  text-align:left;
+
+
+  margin:6px 0;
+
+
+  color:#374151;
+
+
+  font-size:16px;
+
+
+  line-height:1.6;
+
+
+  word-wrap:break-word;
+
+
+}
+
+
+
+
+/* EDIT DELETE BUTTON AREA */
+
+.postedJobButtons {
+
+
+  width:100%;
+
+
+  display:flex;
+
+
+  gap:15px;
+
+
+  margin-top:20px;
+
+
+}
+
+
+
+
+/* BUTTONS */
+
+.postedJobButtons button {
+
+
+  flex:1;
+
+
+  padding:12px;
+
+
+  border:none;
+
+
+  border-radius:10px;
+
+
+  font-size:15px;
+
+
+  font-weight:600;
+
+
+  cursor:pointer;
+
+
+  transition:0.3s;
+
+
+}
+
+
+
+
+
+/* EDIT */
+
+.postedJobButtons button:first-child {
+
+
+  background:#2563eb;
+
+
+  color:white;
+
+
+}
+
+
+
+
+
+/* DELETE */
+
+.postedJobButtons button:last-child {
+
+
+  background:#dc2626;
+
+
+  color:white;
+
+
+}
+
+
+
+
+.postedJobButtons button:hover {
+
+
+  transform:translateY(-3px);
+
+
+}
+
+
+
+
+
+/* INPUTS */
+
+.postedJobCard input,
+
+
+.postedJobCard textarea {
+
+
+  width:100%;
+
+
+  padding:12px;
+
+
+  border:1px solid #cbd5e1;
+
+
+  border-radius:10px;
+
+
+  font-size:15px;
+
+
+  box-sizing:border-box;
+
+
+}
+
+
+
+
+.postedJobCard textarea {
+
+
+  min-height:130px;
+
+
+}
+
+
+
+
+/* SAVE BUTTON */
+
+.postedJobCard > button {
+
+
+  align-self:center;
+
+
+  margin-top:15px;
+
+
+  padding:12px 35px;
+
+
+  background:#16a34a;
+
+
+  color:white;
+
+
+  border:none;
+
+
+  border-radius:10px;
+
+
+  font-weight:600;
+
+
+  cursor:pointer;
+
+
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+
+  .postedJobCard {
+
+
+    width:90%;
+
+
+  }
+
+
+
+  .postedJobsContainer h2 {
+
+
+    font-size:2rem;
+
+
+  }
+
+
+
+  .postedJobButtons {
+
+
+    flex-direction:column;
+
+
+  }
+
+
+
+}

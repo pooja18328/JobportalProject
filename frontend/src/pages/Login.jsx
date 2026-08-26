@@ -51,6 +51,32 @@ function Login() {
       return;
     }
 
+    // ==========================
+    // ADMIN LOGIN (Hardcoded)
+    // ==========================
+    if (formData.role === "Admin") {
+      if (
+        formData.email === "admin@gmail.com" &&
+        formData.password === "admin123"
+      ) {
+        localStorage.setItem("role", "Admin");
+
+        showMessage("Admin Login Successful!", "success");
+
+        setTimeout(() => {
+          navigate("/admin/dashboard");
+        }, 1200);
+
+        return;
+      } else {
+        showMessage("Invalid Admin Credentials", "error");
+        return;
+      }
+    }
+
+    // ==========================
+    // Employer & Job Seeker Login
+    // ==========================
     try {
       const res = await axios.post(
         "http://localhost:5000/api/users/login",
@@ -69,7 +95,6 @@ function Login() {
           navigate("/jobseeker/home");
         }
       }, 1200);
-
     } catch (error) {
       showMessage(
         error.response?.data?.message || "Login failed",
@@ -113,6 +138,7 @@ function Login() {
                 <option value="">Select Role</option>
                 <option value="Employer">Employer</option>
                 <option value="Job Seeker">Job Seeker</option>
+                <option value="Admin">Admin</option>
               </select>
             </div>
 

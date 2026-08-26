@@ -1,0 +1,71 @@
+.ai-practice-container{
+
+  min-height:80vh;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
+
+
+.ai-practice-container h1{
+
+  color:#2455d6;
+
+}
+
+
+.practice-box{
+
+  margin-top:20px;
+
+  padding:30px;
+
+  width:350px;
+
+  background:white;
+
+  border-radius:15px;
+
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+}
+
+
+
+.practice-box input{
+
+
+  width:100%;
+
+  padding:12px;
+
+  margin:15px 0;
+
+}
+
+
+
+.practice-box button{
+
+
+  width:100%;
+
+  padding:12px;
+
+  background:#2455d6;
+
+  color:white;
+
+  border:none;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+}

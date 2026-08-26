@@ -1,4 +1,5 @@
 import EmployerNavbar from "../components/EmployerNavbar";
+import Analytics from "../components/Analytics";
 import "./EmployerHome.css";
 import { Link } from "react-router-dom";
 import empImage from "../assets/emp.jpg";
@@ -39,7 +40,6 @@ function EmployerHome() {
                 <button>View My Jobs</button>
               </Link>
 
-              {/* ADD THIS BUTTON */}
               <Link to="/applicant-applications">
                 <button>Applicant Applications</button>
               </Link>
@@ -55,6 +55,9 @@ function EmployerHome() {
           </div>
 
         </section>
+
+        {/* ANALYTICS SECTION */}
+        <Analytics />
 
         {/* HOW IT WORKS */}
         <section className="how-it-works">

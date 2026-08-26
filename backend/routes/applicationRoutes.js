@@ -61,7 +61,6 @@ router.post(
         message: "Application submitted successfully!",
         application,
       });
-
     } catch (error) {
       console.log(error);
 
@@ -82,7 +81,6 @@ router.get("/all", async (req, res) => {
       success: true,
       applications,
     });
-
   } catch (error) {
     console.log(error);
 
@@ -96,11 +94,19 @@ router.get("/all", async (req, res) => {
 /* UPDATE APPLICATION STATUS */
 router.put("/status/:id", async (req, res) => {
   try {
-    const { status } = req.body;
+    const {
+      status,
+      rejectionReason,
+      aiSuggestion,
+    } = req.body;
 
     const application = await Application.findByIdAndUpdate(
       req.params.id,
-      { status },
+      {
+        status,
+        rejectionReason,
+        aiSuggestion,
+      },
       { new: true }
     ).populate("jobId");
 
@@ -155,7 +161,11 @@ router.put("/status/:id", async (req, res) => {
         </p>
 
         <p>
-          We encourage you to apply for future opportunities.
+          <b>Reason:</b> ${rejectionReason || "Missing Required Skills"}
+        </p>
+
+        <p>
+          <b>AI Suggestion:</b> ${aiSuggestion || "Learn the required skills and reapply."}
         </p>
 
         <br/>
@@ -171,7 +181,6 @@ router.put("/status/:id", async (req, res) => {
       message: `Application ${status} successfully and email sent.`,
       application,
     });
-
   } catch (error) {
     console.log(error);
 

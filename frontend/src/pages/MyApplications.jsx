@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -18,7 +19,6 @@ const MyApplications = () => {
       if (data.success) {
         setApplications(data.applications);
       }
-
     } catch (error) {
       console.log(error);
       toast.error("Failed to fetch applications");
@@ -30,17 +30,25 @@ const MyApplications = () => {
   }, []);
 
   // UPDATE STATUS
-  const updateStatus = async (id, status) => {
+  const updateStatus = async (
+    id,
+    status,
+    rejectionReason = "",
+    aiSuggestion = ""
+  ) => {
     try {
       const { data } = await axios.put(
         `http://localhost:5000/api/v1/application/status/${id}`,
-        { status }
+        {
+          status,
+          rejectionReason,
+          aiSuggestion,
+        }
       );
 
       toast.success(data.message);
 
       fetchApplications();
-
     } catch (error) {
       console.log(error);
       toast.error("Failed to update status");
@@ -49,9 +57,7 @@ const MyApplications = () => {
 
   return (
     <section className="applicationsPage">
-
       <div className="applicationsContainer">
-
         <h2>
           {userRole === "Employer"
             ? "Applicant Applications"
@@ -64,14 +70,11 @@ const MyApplications = () => {
           </p>
         ) : (
           applications.map((app) => (
-
             <div
               className="applicationCard"
               key={app._id}
             >
-
               <div className="applicationTop">
-
                 <h3>
                   {app.jobId?.title || "Job Title"}
                 </h3>
@@ -83,11 +86,9 @@ const MyApplications = () => {
                 >
                   {app.status || "Pending"}
                 </span>
-
               </div>
 
               <div className="applicationDetails">
-
                 <p>
                   <strong>Name:</strong> {app.name}
                 </p>
@@ -104,10 +105,22 @@ const MyApplications = () => {
                   <strong>Address:</strong> {app.address}
                 </p>
 
+                {app.status === "Rejected" && (
+                  <>
+                    <p>
+                      <strong>Reason:</strong>{" "}
+                      {app.rejectionReason}
+                    </p>
+
+                    <p>
+                      <strong>AI Suggestion:</strong>{" "}
+                      {app.aiSuggestion}
+                    </p>
+                  </>
+                )}
               </div>
 
               <div className="buttonGroup">
-
                 {/* VIEW RESUME */}
                 <a
                   href={`http://localhost:5000/uploads/${app.resume}`}
@@ -125,7 +138,10 @@ const MyApplications = () => {
                     <button
                       className="acceptBtn"
                       onClick={() =>
-                        updateStatus(app._id, "Accepted")
+                        updateStatus(
+                          app._id,
+                          "Accepted"
+                        )
                       }
                     >
                       Accept
@@ -134,24 +150,26 @@ const MyApplications = () => {
                     <button
                       className="rejectBtn"
                       onClick={() =>
-                        updateStatus(app._id, "Rejected")
+                        updateStatus(
+                          app._id,
+                          "Rejected",
+                          "Missing Required Skills or ",
+                          "Recuritment process has been completed. Thank you for your interest."
+                        )
                       }
                     >
                       Reject
                     </button>
                   </>
                 )}
-
               </div>
-
             </div>
           ))
         )}
-
       </div>
-
     </section>
   );
 };
 
 export default MyApplications;
+

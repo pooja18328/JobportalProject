@@ -2,8 +2,13 @@ const express = require("express");
 const router = express.Router();
 const Job = require("../models/jobModel");
 
-/* POST JOB */
-router.post("/post", async (req, res) => {
+// ✅ IMPORT AUTH MIDDLEWARE
+const authMiddleware = require("../middleware/auth");
+
+/* =========================
+   POST JOB (FIXED)
+========================= */
+router.post("/post", authMiddleware, async (req, res) => {
   try {
     const {
       title,
@@ -14,6 +19,7 @@ router.post("/post", async (req, res) => {
       description,
     } = req.body;
 
+    // validation
     if (
       !title ||
       !country ||
@@ -28,6 +34,7 @@ router.post("/post", async (req, res) => {
       });
     }
 
+    // ✅ FIX: added postedBy from logged-in user
     const job = await Job.create({
       title,
       country,
@@ -35,6 +42,7 @@ router.post("/post", async (req, res) => {
       category,
       skills,
       description,
+      postedBy: req.user._id,
     });
 
     return res.status(201).json({
@@ -52,7 +60,9 @@ router.post("/post", async (req, res) => {
   }
 });
 
-/* GET ALL JOBS */
+/* =========================
+   GET ALL JOBS
+========================= */
 router.get("/all", async (req, res) => {
   try {
     const jobs = await Job.find().sort({ createdAt: -1 });
@@ -69,7 +79,9 @@ router.get("/all", async (req, res) => {
   }
 });
 
-/* UPDATE JOB */
+/* =========================
+   UPDATE JOB
+========================= */
 router.put("/update/:id", async (req, res) => {
   try {
     const updatedJob = await Job.findByIdAndUpdate(
@@ -91,7 +103,9 @@ router.put("/update/:id", async (req, res) => {
   }
 });
 
-/* DELETE JOB */
+/* =========================
+   DELETE JOB
+========================= */
 router.delete("/delete/:id", async (req, res) => {
   try {
     await Job.findByIdAndDelete(req.params.id);

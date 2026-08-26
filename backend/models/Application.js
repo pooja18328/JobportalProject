@@ -47,6 +47,17 @@ const applicationSchema = new mongoose.Schema(
       enum: ["Pending", "Accepted", "Rejected"],
       default: "Pending",
     },
+
+    // Rejection Analysis
+    rejectionReason: {
+      type: String,
+      default: "",
+    },
+
+    aiSuggestion: {
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true }
 );

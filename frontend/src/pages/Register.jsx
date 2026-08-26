@@ -75,17 +75,21 @@ function Register() {
         formData
       );
 
-      localStorage.setItem("role", formData.role);
-
       showMessage("Registration successful!", "success");
 
+      // Clear the form
+      setFormData({
+        role: "",
+        name: "",
+        email: "",
+        phone: "",
+        password: "",
+      });
+
+      // Redirect to Login page after success
       setTimeout(() => {
-        if (formData.role === "Employer") {
-          navigate("/employer/home");
-        } else {
-          alert("Job Seeker Dashboard is under development");
-        }
-      }, 1200);
+        navigate("/login");
+      }, 1500);
 
     } catch (error) {
       showMessage(
@@ -126,6 +130,7 @@ function Register() {
                 name="role"
                 value={formData.role}
                 onChange={handleChange}
+                required
               >
                 <option value="">Select Role</option>
                 <option value="Employer">Employer</option>
@@ -162,6 +167,7 @@ function Register() {
                 placeholder="Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
+                maxLength={10}
                 required
               />
             </div>
